@@ -1,26 +1,28 @@
-package GUI.Classes.Elements;
+package GUI.Classes.Elements.Frame;
+
+import GUI.Interfaces.GuiElement;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements GuiElement {
 
     private static MainFrame mainFrame;
 
     private MainFrame() {
-        this.setLayout(new GridLayout());
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setContentPane(MainContentPanel.getMainContentPanel());
         this.setSize(300, 600);
-        this.pack();
         this.setVisible(true);
     }
 
     private MainFrame(String title) {
         this.setTitle(title);
-        this.setLayout(new GridLayout());
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setContentPane(MainContentPanel.getMainContentPanel());
         this.setSize(300, 600);
-        this.pack();
         this.setVisible(true);
     }
 

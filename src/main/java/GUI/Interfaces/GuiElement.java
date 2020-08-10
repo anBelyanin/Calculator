@@ -1,2 +1,4 @@
-package GUI.Interfaces;public interface GuiElement {
+package GUI.Interfaces;
+
+public interface GuiElement {
 }

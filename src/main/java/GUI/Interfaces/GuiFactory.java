@@ -1,2 +1,4 @@
-package GUI.Interfaces;public interface GuiFactory {
+package GUI.Interfaces;
+
+public interface GuiFactory {
 }
