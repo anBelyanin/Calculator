@@ -11,6 +11,7 @@ public class MainContentPanel extends JPanel implements GuiElement {
 
     private MainContentPanel() {
         this.add(InputField.getInputField());
+        this.add(NumButtonsPanel.getNumButtonsPanel());
         this.setVisible(true);
     }
 
