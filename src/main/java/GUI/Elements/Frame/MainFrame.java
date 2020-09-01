@@ -1,6 +1,6 @@
 package GUI.Classes.Elements.Frame;
 
-import GUI.Interfaces.GuiElement;
+import Interfaces.GuiElement;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class MainFrame extends JFrame implements GuiElement {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setContentPane(MainContentPanel.getMainContentPanel());
-        this.setSize(300, 600);
+        this.setSize(300, 300);
         this.setVisible(true);
     }
 
@@ -22,7 +22,7 @@ public class MainFrame extends JFrame implements GuiElement {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setContentPane(MainContentPanel.getMainContentPanel());
-        this.setSize(300, 600);
+        this.setSize(300, 300);
         this.setVisible(true);
     }
 

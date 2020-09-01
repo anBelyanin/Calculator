@@ -1,6 +1,6 @@
 package GUI.Classes.Elements.Fields;
 
-import GUI.Interfaces.GuiElement;
+import Interfaces.GuiElement;
 
 import javax.swing.*;
 import java.awt.*;

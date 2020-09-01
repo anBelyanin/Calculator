@@ -1,7 +1,7 @@
-package GUI.Classes.Elements.Frame;
+package GUI.Classes.Elements.Content;
 
 import GUI.Classes.Elements.Fields.InputField;
-import GUI.Interfaces.GuiElement;
+import Interfaces.GuiElement;
 
 import javax.swing.*;
 import java.awt.*;
