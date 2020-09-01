@@ -1,2 +1,9 @@
-package Logic;public enum CalculatingOperations {
+package Logic.Enums;
+
+public enum CalculatingOperations {
+    PLUS,
+    MINUS,
+    MULTIPLICATION,
+    DIVISION,
+    EQUALITY
 }

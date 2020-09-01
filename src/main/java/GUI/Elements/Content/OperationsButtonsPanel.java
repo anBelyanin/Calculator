@@ -1,7 +1,10 @@
-package GUI.Classes.Elements.Content;
+package GUI.Elements.Content;
 
-import GUI.Classes.Elements.Fields.InputField;
-import Interfaces.GuiElement;
+import GUI.Elements.Fields.InputField;
+import GUI.Interfaces.GuiElement;
+import Logic.Controllers.Calculating.CalculatingController;
+import Logic.Enums.CalculatingOperations;
+import Logic.Exceptions.DivisionByZeroException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +22,6 @@ public class OperationsButtonsPanel extends JPanel implements GuiElement {
     private static JButton divisionButton;
     private static JButton equalsButton;
 
-    private double result = 0;
-
     private OperationsButtonsPanel() {
         this.setLayout(new GridLayout(1, 4));
         initializeButtons();
@@ -37,13 +38,12 @@ public class OperationsButtonsPanel extends JPanel implements GuiElement {
         plusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    result += Double.parseDouble(InputField.getInputField().getText());
-                    InputField.getInputField().setText(result + "");
+                if (CalculatingController.getCalculatingOperation() != null) {
+                   InputField.getInputField().setText(CalculatingController.calculate() + "");
                 }
-                catch (NumberFormatException e){
-                    InputField.getInputField().setText("Illegal number!");
-                }
+                CalculatingController.setCalculatingOperation(CalculatingOperations.PLUS);
+                CalculatingController.setValue(Double.parseDouble(InputField.getInputField().getText()));
+                InputField.getInputField().setText("");
             }
         });
         operationsButtonsGroup.add(plusButton);
@@ -51,13 +51,12 @@ public class OperationsButtonsPanel extends JPanel implements GuiElement {
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    result -= Double.parseDouble(InputField.getInputField().getText());
-                    InputField.getInputField().setText(result + "");
+                if (CalculatingController.getCalculatingOperation() != null) {
+                    InputField.getInputField().setText(CalculatingController.calculate() + "");
                 }
-                catch (NumberFormatException e){
-                    InputField.getInputField().setText("Illegal number!");
-                }
+                CalculatingController.setCalculatingOperation(CalculatingOperations.MINUS);
+                CalculatingController.setValue(Double.parseDouble(InputField.getInputField().getText()));
+                InputField.getInputField().setText("");
             }
         });
         operationsButtonsGroup.add(minusButton);
@@ -65,13 +64,12 @@ public class OperationsButtonsPanel extends JPanel implements GuiElement {
         multiplicationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    result *= Double.parseDouble(InputField.getInputField().getText());
-                    InputField.getInputField().setText(result + "");
+                if (CalculatingController.getCalculatingOperation() != null) {
+                    InputField.getInputField().setText(CalculatingController.calculate() + "");
                 }
-                catch (NumberFormatException e){
-                    InputField.getInputField().setText("Illegal number!");
-                }
+                CalculatingController.setCalculatingOperation(CalculatingOperations.MULTIPLICATION);
+                CalculatingController.setValue(Double.parseDouble(InputField.getInputField().getText()));
+                InputField.getInputField().setText("");
             }
         });
         operationsButtonsGroup.add(multiplicationButton);
@@ -79,17 +77,12 @@ public class OperationsButtonsPanel extends JPanel implements GuiElement {
         divisionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    if(InputField.getInputField().getText().equals("") || InputField.getInputField().getText().equals("0")) throw new IllegalArgumentException();
-                    result /= Double.parseDouble(InputField.getInputField().getText());
-                    InputField.getInputField().setText(result + "");
+                if (CalculatingController.getCalculatingOperation() != null) {
+                    InputField.getInputField().setText(CalculatingController.calculate() + "");
                 }
-                catch (NumberFormatException e){
-                    InputField.getInputField().setText("Illegal number!");
-                }
-                catch (IllegalArgumentException e) {
-                    InputField.getInputField().setText("Division by zero is impossible!");
-                }
+                CalculatingController.setCalculatingOperation(CalculatingOperations.DIVISION);
+                CalculatingController.setValue(Double.parseDouble(InputField.getInputField().getText()));
+                InputField.getInputField().setText("");
             }
         });
         operationsButtonsGroup.add(divisionButton);
@@ -97,13 +90,9 @@ public class OperationsButtonsPanel extends JPanel implements GuiElement {
         equalsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    result *= Double.parseDouble(InputField.getInputField().getText());
-                    InputField.getInputField().setText(result + "");
-                }
-                catch (NumberFormatException e){
-                    InputField.getInputField().setText("Illegal number!");
-                }
+                InputField.getInputField().setText(CalculatingController.calculate() + "");
+                CalculatingController.setValue(0);
+                CalculatingController.setCalculatingOperation(null);
             }
         });
     }

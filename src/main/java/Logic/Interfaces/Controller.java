@@ -1,4 +1,4 @@
-package Interfaces;
+package Logic.Interfaces;
 
 public interface Controller {
 }
